@@ -2,7 +2,7 @@
 
 import { Box, Typography } from '@mui/material'
 import { keyframes } from '@mui/system'
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const gridShift = keyframes`
@@ -49,22 +49,8 @@ const fadeOut = keyframes`
 
 export default function Intro () {
   const [show, setShow] = useState(true)
-  const router = useRouter();
-//  useEffect(() => {
-//     const timer = setTimeout(() => {
-//       setShow(false)
-//     }, 2200) // match fadeOut duration
+  const router = useRouter()
 
-//     return () => clearTimeout(timer)
-//   }, [])
-
-  // 🚀 Step 2: navigate AFTER state change
-
-    // if (!show) {
-    //   router.push('/home')
-    // }
-
- // ⏱ control intro duration
   useEffect(() => {
     const timer = setTimeout(() => {
       setShow(false)
@@ -73,22 +59,15 @@ export default function Intro () {
     return () => clearTimeout(timer)
   }, [])
 
-  // 🚀 SAFE navigation (async)
   useEffect(() => {
-    // if (!show) {
-      const navTimer = setTimeout(() => {
-        router.push('/home')
-      }
-      , 
-      2200) 
+    const navTimer = setTimeout(() => {
+      router.push('/home')
+    }, 2200)
 
-      return () => clearTimeout(navTimer)
-    // }
+    return () => clearTimeout(navTimer)
   }, [show, router])
 
   if (!show) return null
-
-  // if (!show) return null
 
   return (
     <Box
@@ -113,7 +92,8 @@ export default function Intro () {
           backgroundImage:
             'linear-gradient(rgba(126, 207, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(126, 207, 255, 0.08) 1px, transparent 1px)',
           backgroundSize: '80px 80px',
-          maskImage: 'radial-gradient(circle at center, black 40%, transparent 100%)',
+          maskImage:
+            'radial-gradient(circle at center, black 40%, transparent 100%)',
           animation: `${gridShift} 18s linear infinite`,
           opacity: 0.4
         }}
@@ -141,7 +121,7 @@ export default function Intro () {
           }}
         />
         <Typography
-          component="h1"
+          component='h1'
           sx={{
             position: 'relative',
             fontSize: { xs: '3.25rem', sm: '4.5rem', md: '6.5rem' },
